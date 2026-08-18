@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.8.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-4d8860ea640e304dd03aab91afd1e267"}, "mark": {"type": "line", "color": "#C8102E", "point": true, "strokeWidth": 3}, "encoding": {"tooltip": [{"field": "year", "type": "ordinal"}, {"field": "main_card_bouts", "type": "quantitative"}, {"field": "events", "type": "quantitative"}], "x": {"field": "year", "title": "Year", "type": "ordinal"}, "y": {"field": "main_card_bouts", "title": "Main-card bouts", "type": "quantitative"}}, "height": 350, "title": {"text": "Main-card bouts by year", "anchor": "start", "subtitle": "Numbered UFC events, main-card bouts only | 2020 to present"}, "width": 700, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json", "datasets": {"data-4d8860ea640e304dd03aab91afd1e267": [{"year": 2020, "main_card_bouts": 56, "events": 11}, {"year": 2021, "main_card_bouts": 66, "events": 13}, {"year": 2022, "main_card_bouts": 65, "events": 13}, {"year": 2023, "main_card_bouts": 70, "events": 14}, {"year": 2024, "main_card_bouts": 70, "events": 14}, {"year": 2025, "main_card_bouts": 65, "events": 13}, {"year": 2026, "main_card_bouts": 35, "events": 7}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
